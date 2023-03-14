@@ -133,6 +133,7 @@
   </div> 
     <script>
 let slideIndex = 0;
+let sliderTimeout = null;
 showSlides(slideIndex);
 
 // Next/previous controls
@@ -159,6 +160,7 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
+  clearTimeout(sliderTimeout);
 }
 
 autoSlides();
@@ -172,7 +174,7 @@ function autoSlides() {
   slideIndex++;
   if (slideIndex > slides.length) {slideIndex = 1}
   slides[slideIndex-1].style.display = "block";
-  setTimeout(autoSlides, 3000); // Change image every 3 seconds
+  sliderTimeout = setTimeout(autoSlides, 3000); // Change image every 3 seconds
 }
     </script>
 </body>
